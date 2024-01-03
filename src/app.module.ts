@@ -6,13 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
 import { AuthModule } from './auth/auth.module';
-import { CommonModule } from './common/common.module';
 import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
     AuthModule,
-    CommonModule,
     BooksModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
@@ -30,7 +28,6 @@ import { BooksModule } from './books/books.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
